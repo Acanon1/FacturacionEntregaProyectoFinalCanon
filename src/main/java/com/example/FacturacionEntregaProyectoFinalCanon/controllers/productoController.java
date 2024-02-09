@@ -22,10 +22,10 @@ import com.example.FacturacionEntregaProyectoFinalCanon.service.ProductoService;
 @RestController
 @RequestMapping("/api/productos")
 public class productoController {
-
-    private final ProductoService productoService;
-
     @Autowired
+    private ProductoService productoService;
+
+    
     public productoController(ProductoService productoService) {
         this.productoService = productoService;
     }
@@ -35,7 +35,7 @@ public class productoController {
         return productoService.getAllProductos();
     }
 
-    @GetMapping("/{productoId}")
+    @GetMapping("{productoId}")
     public ResponseEntity<Producto> getProductoById(@PathVariable Long productoId) {
         Producto producto = productoService.getProductoById(productoId);
         return ResponseEntity.ok(producto);
@@ -47,13 +47,13 @@ public class productoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProducto);
     }
 
-    @PutMapping("/{productoId}")
+    @PutMapping("{productoId}")
     public ResponseEntity<Producto> updateProducto(@PathVariable Long productoId, @RequestBody Producto producto) {
         Producto updatedProducto = productoService.updateProducto(productoId, producto);
         return ResponseEntity.ok(updatedProducto);
     }
 
-    @DeleteMapping("/{productoId}")
+    @DeleteMapping("{productoId}")
     public ResponseEntity<Void> deleteProducto(@PathVariable Long productoId) {
         productoService.deleteProducto(productoId);
         return ResponseEntity.noContent().build();

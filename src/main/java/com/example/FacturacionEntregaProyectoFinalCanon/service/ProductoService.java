@@ -13,12 +13,8 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class ProductoService {
 
-    private ProductoRepository productoRepository;
-
     @Autowired
-    public ProductoService(ProductoRepository productoRepository) {
-        this.productoRepository = productoRepository;
-    }
+    private ProductoRepository productoRepository;
 
     public List<Producto> getAllProductos() {
         return productoRepository.findAll();

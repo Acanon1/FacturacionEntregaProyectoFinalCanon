@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.FacturacionEntregaProyectoFinalCanon.modelos.Recibo;
-import com.example.FacturacionEntregaProyectoFinalCanon.repositories.reciboRepository;
+import com.example.FacturacionEntregaProyectoFinalCanon.repositories.ReciboRepository;
 
 @RestController
 public class reciboController {
     @Autowired
-    private reciboRepository repo;
+    private ReciboRepository repo;
 
     @GetMapping("recibos")
     public List<Recibo> getRecibos(){
