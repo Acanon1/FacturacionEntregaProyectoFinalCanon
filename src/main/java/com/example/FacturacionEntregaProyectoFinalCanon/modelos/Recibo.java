@@ -55,4 +55,12 @@ public class Recibo {
     public void setTotal(double total) {
         this.total = total;
     }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
 }
