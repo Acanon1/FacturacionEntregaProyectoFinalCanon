@@ -36,6 +36,7 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
+
     public void deleteCliente(Long clienteId) {
         // Validar si el cliente existe antes de eliminar
         getClienteById(clienteId);

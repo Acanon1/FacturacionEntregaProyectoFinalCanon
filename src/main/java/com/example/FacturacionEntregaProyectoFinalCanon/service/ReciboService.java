@@ -22,13 +22,14 @@ public class ReciboService {
     private ReciboRepository reciboRepository;
     @Autowired
 	private ClienteRepository clienteRepository;
-
     @Autowired
     private ProductoRepository productoRepository;
     @Autowired
     private ClienteService clienteService;
     @Autowired
     private FechaService fechaService;
+    @Autowired
+    private ProductoService productoService;
 
     public List<Recibo> getAllRecibos(){
         return reciboRepository.findAll();
@@ -37,7 +38,11 @@ public class ReciboService {
         return reciboRepository.findById(reciboId)
                 .orElseThrow(() -> new EntityNotFoundException("Producto no encontrado con ID: " + reciboId));
     }
-
-
+    public Recibo crearRecibo(Recibo recibo ){
+        Recibo recibos = new Recibo();
+        Cliente clientes = clienteService.getClienteById();
+        recibos.setCliente(clientes);
+        Recibo guardar = reciboRepository.save(recibos);
+    }
 
 }

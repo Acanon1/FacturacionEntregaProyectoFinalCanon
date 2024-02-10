@@ -25,7 +25,8 @@ CREATE TABLE PRODUCTO (
 CREATE TABLE RECIBO (
     id_recibo INT PRIMARY KEY AUTO_INCREMENT,
     id_cliente INT,
-    creacion DATE NOT NULL,
+    creacion DATE,
+    cantidad_total INT,
     total DOUBLE,
     FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente)
 );

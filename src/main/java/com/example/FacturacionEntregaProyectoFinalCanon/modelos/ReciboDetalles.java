@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 @Entity
 public class ReciboDetalles {
     @Id
@@ -16,11 +17,11 @@ public class ReciboDetalles {
 
     @ManyToOne
     @JoinColumn(name = "id_recibo")
-    private Recibo recibo;
+    private Recibo reciboD;
 
     @ManyToOne
     @JoinColumn(name = "id_producto")
-    private Producto producto;
+    private Producto productoD;
 
     @Column
     private int cantidad;
@@ -28,5 +29,39 @@ public class ReciboDetalles {
     @Column(name = "precio_unitario")
     private double precioUnitario;
 
-    // Getters y setters
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Recibo getRecibo() {
+        return reciboD;
+    }
+
+    public void setRecibo(Recibo recibo) {
+        this.reciboD = recibo;
+    }
+    public Producto getProducto() {
+        return productoD;
+    }
+    
+    public void setProducto(Producto producto) {
+        this.productoD = producto;
+    }
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }   
+
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
 }
