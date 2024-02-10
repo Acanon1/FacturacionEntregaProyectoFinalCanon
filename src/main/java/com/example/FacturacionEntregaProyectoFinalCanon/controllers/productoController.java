@@ -5,14 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.FacturacionEntregaProyectoFinalCanon.modelos.Producto;
 
@@ -52,11 +45,15 @@ public class productoController {
         Producto updatedProducto = productoService.updateProducto(productoId, producto);
         return ResponseEntity.ok(updatedProducto);
     }
+    @PatchMapping("{productoId}")
+    public ResponseEntity<Producto> updatePrecio(@PathVariable Long productoId, @RequestBody Producto producto) {
+        Producto updatedPrecio = productoService.updatePrecio(productoId, producto);
+        return ResponseEntity.ok(updatedPrecio);
+    }
 
     @DeleteMapping("{productoId}")
     public ResponseEntity<Void> deleteProducto(@PathVariable Long productoId) {
         productoService.deleteProducto(productoId);
         return ResponseEntity.noContent().build();
     }
-
 }
