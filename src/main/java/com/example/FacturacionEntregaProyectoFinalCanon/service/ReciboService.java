@@ -31,13 +31,15 @@ public class ReciboService {
 
 
 
-    public List<Recibo> getAllRecibos(){
+    public List<Recibo> getAllRecibos() {
         return reciboRepository.findAll();
     }
+
     public Recibo getRecibobyId(Long reciboId) {
         return reciboRepository.findById(reciboId)
-                .orElseThrow(() -> new EntityNotFoundException("Producto no encontrado con ID: " + reciboId));
+                .orElseThrow(() -> new EntityNotFoundException("Recibo not found with ID: " + reciboId));
     }
+    
     public Recibo createRecibo(Recibo reciboRequest) {
         Recibo recibo = new Recibo();
         

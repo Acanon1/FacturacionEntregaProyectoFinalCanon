@@ -49,7 +49,7 @@ public class Recibo {
     public LocalDate getFecha() {
         return fecha;
     }
-    public void setCreacion(LocalDate fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
     public double getTotal() {

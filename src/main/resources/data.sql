@@ -1,16 +1,15 @@
+INSERT INTO CLIENTE (nombre, apellido, documento) VALUES
+('John', 'Doe', '12345678901'),
+('Jane', 'Smith', '23456789012');
 
-INSERT INTO CLIENTE (nombre, apellido, documento) VALUES 
-('Juan', 'Perez', '12345678901'),
-('María', 'González', '98765432101'),
-('Pedro', 'Sánchez', '45678901203');
-
-
+-- Insert sample data into PRODUCTO table
 INSERT INTO PRODUCTO (descripcion, codigo, stock, precio) VALUES
-('Laptop', 'LT1001', 10, 1200.00),
-('Smartphone', 'SP2001', 20, 800.00),
-('Tablet', 'TB3001', 15, 500.00);
+('Laptop', 'LT001', 10, 999.99),
+('Smartphone', 'SP001', 20, 499.99);
 
+-- Insert sample data into RECIBO table
 INSERT INTO RECIBO (id_cliente, fecha, cantidad, total) VALUES
-(1, '2024-02-10', 2, 2400.00),
-(2, '2024-02-10', 3, 2400.00),
-(3, '2024-02-09', 1, 500.00);;
+(1, '2024-02-10', 1, 999.99),
+(2, '2024-02-10', 2, 999.98);
+
+
