@@ -6,6 +6,11 @@ INSERT INTO CLIENTE (nombre, apellido, documento) VALUES
 
 
 INSERT INTO PRODUCTO (descripcion, codigo, stock, precio) VALUES
-('Camisa', 'CAM001', 100, 25.99),
-('Pantalón', 'PAN002', 80, 39.99),
-('Zapatos', 'ZAP003', 50, 59.99);
+('Laptop', 'LT1001', 10, 1200.00),
+('Smartphone', 'SP2001', 20, 800.00),
+('Tablet', 'TB3001', 15, 500.00);
+
+INSERT INTO RECIBO (id_cliente, fecha, cantidad, total) VALUES
+(1, '2024-02-10', 2, 2400.00),
+(2, '2024-02-10', 3, 2400.00),
+(3, '2024-02-09', 1, 500.00);;

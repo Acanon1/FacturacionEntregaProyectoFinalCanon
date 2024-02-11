@@ -1,5 +1,4 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.controllers;
-import org.springframework.web.bind.annotation.RestController;
 import com.example.FacturacionEntregaProyectoFinalCanon.modelos.Cliente;
 
 import com.example.FacturacionEntregaProyectoFinalCanon.service.ClienteService;
@@ -11,17 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/clientes")
 public class clienteController {
 
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/api/clientes")
+    @GetMapping
     public List<Cliente> getAllClientes() {
         return clienteService.getAllClientes();
     }
 
-    @GetMapping("/api/clientes/{clienteId}")
+    @GetMapping("{clienteId}")
     public ResponseEntity<Cliente> getClienteById(@PathVariable Long clienteId) {
         Cliente cliente = clienteService.getClienteById(clienteId);
         return ResponseEntity.ok(cliente);
@@ -33,13 +33,13 @@ public class clienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCliente);
     }
 
-    @PutMapping("/api/clientes/{clienteId}")
+    @PutMapping("{clienteId}")
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long clienteId, @RequestBody Cliente cliente) {
         Cliente updatedCliente = clienteService.updateCliente(clienteId, cliente);
         return ResponseEntity.ok(updatedCliente);
     }
 
-    @DeleteMapping("/api/clientes/{clienteId}")
+    @DeleteMapping("{clienteId}")
     public ResponseEntity<Void> deleteCliente(@PathVariable Long clienteId) {
         clienteService.deleteCliente(clienteId);
         return ResponseEntity.noContent().build();

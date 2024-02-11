@@ -1,12 +1,12 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
-import org.springframework.cglib.core.Local;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,37 +26,31 @@ public class Recibo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_recibo")
-    private Long id;
-
+    private Long reciboid;
     @Temporal(TemporalType.DATE)
     @Column
-    private LocalDate creacion;
-
+    private LocalDate fecha;
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-
-
-    private int cantidad_total;
-
+    @Column
+    private int cantidad;
     @Column
     private double total;
+    @OneToMany(mappedBy = "recibo", fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
+    private Set<Linea> lineas;
 
-    @OneToMany(mappedBy = "reciboD")
-    private List<ReciboDetalles> reciboDetalles;
-
-
-    public Long getId() {
-        return id;
+    public Long getReciboid() {
+        return reciboid;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setReciboid(Long reciboid) {
+        this.reciboid = reciboid;
     }
-    public LocalDate getCreacion() {
-        return creacion;
+    public LocalDate getFecha() {
+        return fecha;
     }
-    public void setCreacion(LocalDate creacion) {
-        this.creacion = creacion;
+    public void setCreacion(LocalDate fecha) {
+        this.fecha = fecha;
     }
     public double getTotal() {
         return total;
@@ -71,29 +65,16 @@ public class Recibo {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public int getCantidad_total(){
-        return cantidad_total;
+    public int getCantidad(){
+        return cantidad;
     }
-    public void setCantidad_total(int cantidad_total){
-        this.cantidad_total = cantidad_total;
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
     }
 
     public Recibo (){
         
     }
-    public Recibo(long id, LocalDate creacion, double total, int cantidad_total, Cliente cliente){
-        this.id = id;
-        this.creacion = creacion;
-        this.total = total;
-        this.cantidad_total = cantidad_total;
-        this.cliente = cliente;
-    }
-    @Override
-    public String toString(){
-        return "Recibo [id=" + id + ", fecha=" + creacion + ", total=" + total + "]";
-	}
-
-
 }
 
 

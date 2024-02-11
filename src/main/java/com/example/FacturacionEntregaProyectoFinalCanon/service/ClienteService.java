@@ -32,7 +32,7 @@ public class ClienteService {
     public Cliente updateCliente(Long clienteId, Cliente cliente) {
         // Validar si el cliente existe antes de actualizar
         getClienteById(clienteId);
-        cliente.setId(clienteId);
+        cliente.setClienteid(clienteId);
         return clienteRepository.save(cliente);
     }
 

@@ -17,7 +17,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-    private Long id;
+    private Long clienteid;
     @Column
     private String nombre;
     @Column
@@ -25,11 +25,11 @@ public class Cliente {
     @Column
     private Long documento;
 
-    public Long getId() {
-        return id;
+    public Long getClienteid() {
+        return clienteid;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setClienteid(Long clienteid) {
+        this.clienteid = clienteid;
     }
     public String getNombre() {
         return nombre;
@@ -51,5 +51,17 @@ public class Cliente {
         this.documento = documento;
     }
 
-    
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Cliente [");
+        if (clienteid != null)
+            builder.append("clienteid=").append(clienteid).append(",");
+        if(documento != null)
+            builder.append("documento=").append(documento);
+        builder.append("]");
+        return builder.toString();
+    }
+
 }
+

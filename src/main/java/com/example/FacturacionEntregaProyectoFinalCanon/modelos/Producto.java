@@ -6,35 +6,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
-
 @Entity
 public class Producto {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-    private Long id;
-
-    @Column
-    private String descripcion;
-
-    @Column
-    private String codigo;
-
+    private Long productoid;
     @Column
     private int stock;
-
+    @Column
+    private String codigo;
+    @Column
+    private String descripcion;
     @Column
     private double precio;
-
-    public Long getId() {
-        return id;
+    public Long getProductoid() {
+        return productoid;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductoid(Long productoid) {
+        this.productoid = productoid;
     }
     public String getDescripcion() {
         return descripcion;
@@ -60,6 +52,5 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
     
 }

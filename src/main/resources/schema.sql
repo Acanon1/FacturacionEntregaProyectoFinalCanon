@@ -1,6 +1,6 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS RECIBO_DETALLES;
+DROP TABLE IF EXISTS LINEA;
 DROP TABLE IF EXISTS RECIBO;
 DROP TABLE IF EXISTS PRODUCTO;
 DROP TABLE IF EXISTS CLIENTE;
@@ -25,18 +25,19 @@ CREATE TABLE PRODUCTO (
 CREATE TABLE RECIBO (
     id_recibo INT PRIMARY KEY AUTO_INCREMENT,
     id_cliente INT,
-    creacion DATE,
-    cantidad_total INT,
+    fecha DATE,
+    cantidad INT,
     total DOUBLE,
     FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente)
 );
 
 
 
-CREATE TABLE RECIBO_DETALLES (
-    id_recibo_detalles INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE LINEA (
+    id_linea INT PRIMARY KEY AUTO_INCREMENT,
     id_recibo INT,
     id_producto INT,
+    descripcion VARCHAR(150), 
     cantidad INT,
     precio_unitario DOUBLE,
     FOREIGN KEY (id_recibo) REFERENCES RECIBO(id_recibo),
