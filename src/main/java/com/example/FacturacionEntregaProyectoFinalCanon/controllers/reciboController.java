@@ -27,7 +27,6 @@ public class reciboController {
      public reciboController(ReciboService reciboService) {
         this.reciboService = reciboService;
     }
-
     @GetMapping
     public List<Recibo> getAllRecibos() {
         return reciboService.getAllRecibos();

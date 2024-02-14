@@ -46,6 +46,7 @@ public class Recibo {
     public void setReciboid(Long reciboid) {
         this.reciboid = reciboid;
     }
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -65,6 +66,7 @@ public class Recibo {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
     public int getCantidad(){
         return cantidad;
     }
