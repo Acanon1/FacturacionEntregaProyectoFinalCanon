@@ -1,4 +1,6 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+
+//entidad de productos
 @Getter
 @Setter
 @Entity
@@ -15,13 +19,13 @@ public class Producto {
     @Column(name = "id_producto")
     private Long productoid;
     @Column
-    private int stock;
+    private Integer stock;
     @Column
     private String codigo;
     @Column
     private String descripcion;
     @Column
-    private double precio;
+    private BigDecimal precio;
     public Long getProductoid() {
         return productoid;
     }
@@ -40,17 +44,32 @@ public class Producto {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
+
+    @Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Producto [");
+		if (productoid != null)
+			builder.append("productoid=").append(productoid).append(", ");
+		if (stock != null)
+			builder.append("cantidad=").append(stock).append(", ");
+		if (codigo != null)
+			builder.append("codigo=").append(codigo);
+		builder.append("]");
+		return builder.toString();
+	}
+
     
 }

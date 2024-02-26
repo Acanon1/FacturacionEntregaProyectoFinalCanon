@@ -13,23 +13,22 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-
+    //metodo de obtener todos los productos
     public List<Producto> getAllProductos() {
         return productoRepository.findAll();
     }
-
+    //obtener un producto por ID
     public Producto getProductoById(Long productoId) {
         return productoRepository.findById(productoId)
                 .orElseThrow(() -> new EntityNotFoundException("Producto no encontrado con ID: " + productoId));
     }
-
+    //crear un nuevo producto
     public Producto createProducto(Producto producto) {
-        // Puedes realizar validaciones antes de guardar el producto, si es necesario
         return productoRepository.save(producto);
     }
-
+    //actualizar un producto
     public Producto updateProducto(Long productoId, Producto producto) {
-        // Validar si el producto existe antes de actualizar
+      
         Producto buscaProducto = productoRepository.findById(productoId).
             orElseThrow(()-> new RuntimeException("Producto no encontrado, ID: " + productoId));
 
@@ -39,6 +38,7 @@ public class ProductoService {
         buscaProducto.setPrecio(producto.getPrecio());
         return productoRepository.save(buscaProducto);
     }
+    //actualizar precio de un producto
     public Producto updatePrecio(Long productoId, Producto producto){
         Producto buscaProducto = productoRepository.findById(productoId).
             orElseThrow(()-> new RuntimeException("producto no encontrado: " + productoId));
@@ -46,12 +46,13 @@ public class ProductoService {
         buscaProducto.setPrecio(producto.getPrecio());
         return productoRepository.save(buscaProducto);
     }
-
+    //borrar un producto
     public void deleteProducto(Long productoId) {
-        // Validar si el producto 
+       
         getProductoById(productoId);
         productoRepository.deleteById(productoId);
     }
+    //actualizar el stock de producti
     public Producto updateStock(Producto producto, int cantidad){
         int nuevo = producto.getStock() - cantidad;
         producto.setStock(nuevo);

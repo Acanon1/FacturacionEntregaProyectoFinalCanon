@@ -1,26 +1,27 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-
+//entidad de recibo tipo data transfer object
 public class ReciboDTO {
-    @Column(name = "id_recibo")
-    private int reciboid;
+
+    private Long reciboid;
     private int cantidad;
-    private LocalDate creacion;
-    private double total;
+    private Date fecha;
+    private BigDecimal total;
 
     private Cliente cliente;
 
     private Set<LineaDTO> lineas;
 
-    public int getReciboid() {
+    public Long  getReciboid() {
         return reciboid;
     }
 
-    public void setReciboid(int reciboid) {
+    public void setReciboid(Long reciboid) {
         this.reciboid = reciboid;
     }
 
@@ -32,19 +33,19 @@ public class ReciboDTO {
         this.cantidad = cantidad;
     }
 
-    public LocalDate getCreacion() {
-        return creacion;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setCreacion(LocalDate creacion) {
-        this.creacion = creacion;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

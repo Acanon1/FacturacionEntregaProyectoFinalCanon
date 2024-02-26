@@ -1,21 +1,43 @@
-INSERT INTO CLIENTE (nombre, apellido, documento) VALUES
-('Juan', 'Pérez', '12345678901'),
-('María', 'García', '23456789012'),
-('Pedro', 'López', '34567890123');
 
-INSERT INTO PRODUCTO (descripcion, codigo, stock, precio) VALUES
-('Camisa de algodón', 'CAM001', 50, 29.99),
-('Pantalón de mezclilla', 'PAN002', 30, 39.99),
-('Zapatos de cuero', 'ZAP003', 20, 79.99);
 
-INSERT INTO RECIBO (id_cliente, fecha, cantidad, total) VALUES
-(1, '2024-02-12', 2, 59.98),
-(2, '2024-02-11', 1, 39.99),
-(3, '2024-02-10', 3, 239.97);
+DROP TABLE IF EXISTS linea;
+DROP TABLE IF EXISTS recibo;
+DROP TABLE IF EXISTS producto;
+DROP TABLE IF EXISTS cliente;
 
-INSERT INTO LINEA (id_recibo, id_producto, descripcion, cantidad, precio_unitario) VALUES
-(1, 1, 'Camisa de algodón talla M', 1, 29.99),
-(1, 3, 'Zapatos de cuero talla 10', 1, 79.99),
-(2, 2, 'Pantalón de mezclilla talla 32', 1, 39.99),
-(3, 1, 'Camisa de algodón talla L', 2, 29.99),
-(3, 3, 'Zapatos de cuero talla 9', 1, 79.99);
+
+CREATE TABLE CLIENTE (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    documento VARCHAR(11)
+);
+
+CREATE TABLE PRODUCTO (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(100),
+    codigo VARCHAR(10),
+    stock INT,
+    precio DECIMAL(10, 2)
+);
+
+CREATE TABLE RECIBO (
+    id_recibo INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT,
+    fecha DATE,
+    cantidad INT,
+    total DECIMAL(10, 2),
+    CONSTRAINT FK_cliente FOREIGN KEY (id_cliente) 
+    REFERENCES CLIENTE(id_cliente)
+);
+
+CREATE TABLE LINEA (
+    id_linea INT AUTO_INCREMENT PRIMARY KEY,
+    id_recibo INT,
+    id_producto INT,
+    descripcion VARCHAR(100),
+    cantidad INT,
+    precio_unitario DECIMAL(10, 2),
+    FOREIGN KEY (id_recibo) REFERENCES RECIBO(id_recibo),
+    FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto)
+);

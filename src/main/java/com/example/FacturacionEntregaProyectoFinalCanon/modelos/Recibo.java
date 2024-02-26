@@ -1,6 +1,7 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -18,6 +19,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
+//entidad de recibos
 @Getter
 @Setter
 
@@ -27,16 +29,16 @@ public class Recibo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_recibo")
     private Long reciboid;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column
-    private LocalDate fecha;
+    private Date fecha;
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
     @Column
-    private int cantidad;
+    private Integer cantidad;
     @Column
-    private double total;
+    private BigDecimal total;
     @OneToMany(mappedBy = "recibo", fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
     private Set<Linea> lineas;
 
@@ -47,16 +49,16 @@ public class Recibo {
         this.reciboid = reciboid;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
     public Cliente getCliente() {
@@ -67,16 +69,44 @@ public class Recibo {
         this.cliente = cliente;
     }
     
-    public int getCantidad(){
+    public Integer getCantidad(){
         return cantidad;
     }
-    public void setCantidad(int cantidad){
+    public void setCantidad(Integer cantidad){
         this.cantidad = cantidad;
     }
+    public Set<Linea> getLineas() {
+		return this.lineas;
+	}
+
+	public void setLineas(Set<Linea> lineas) {
+		this.lineas = lineas;
+	}
+    public Linea agregarLinea(Linea linea) {
+		getLineas().add(linea);
+		linea.setRecibo(this);
+
+		return linea;
+	}
 
     public Recibo (){
         
     }
+    @Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Comprobante [");
+		if (reciboid != null)
+			builder.append("comprobanteid=").append(reciboid).append(", ");
+		if (cantidad != null)
+			builder.append("cantidad=").append(cantidad).append(", ");
+		if (fecha != null)
+			builder.append("fecha=").append(fecha).append(", ");
+        if (total != null)
+			builder.append("total=").append(total).append(", ");
+		builder.append("]");
+		return builder.toString();
+	}
 }
 
 

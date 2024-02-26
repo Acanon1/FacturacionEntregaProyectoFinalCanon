@@ -1,8 +1,12 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+//entidad de linea
 @Getter
 @Setter
 @Entity
@@ -16,7 +20,7 @@ public class Linea {
     @Column
     private String descripcion;
     @Column(name = "precio_unitario")
-    private double precioUnitario;
+    private BigDecimal precioUnitario;
     @ManyToOne
     @JoinColumn(name = "id_recibo")
     private Recibo recibo;
@@ -44,11 +48,11 @@ public class Linea {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    public double getPrecioUnitario() {
+    public BigDecimal getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
     public int getCantidad() {
@@ -58,4 +62,15 @@ public class Linea {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+    @Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Linea [lineaid=").append(lineaid).append(", cantidad=").append(cantidad).append(", ");
+		if (descripcion != null)
+			builder.append("descripcion=").append(descripcion).append(", ");
+		if (precioUnitario != null)
+			builder.append("precio=").append(precioUnitario);
+		builder.append("]");
+		return builder.toString();
+	}
 }

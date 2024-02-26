@@ -1,23 +1,13 @@
-
 INSERT INTO CLIENTE (nombre, apellido, documento) VALUES
-('John', 'Doe', '12345678901'),
-('Jane', 'Smith', '23456789012');
-
+('Juan', 'Pérez', '12345678901'),
+('María', 'García', '23456789012'),
+('Pedro', 'López', '34567890123');
 
 INSERT INTO PRODUCTO (descripcion, codigo, stock, precio) VALUES
-('Laptop', 'LT001', 10, 999.99),
-('Smartphone', 'SP001', 20, 499.99);
-
-
+('Camisa de algodón', 'CAM001', 50, 29.99),
+('Pantalón de mezclilla', 'PAN002', 30, 39.99),
+('Zapatos de cuero', 'ZAP003', 20, 79.99);
 
 INSERT INTO RECIBO (id_cliente, fecha, cantidad, total) VALUES
-(@id_cliente_1, '2024-02-10', 1, 999.99),
-(@id_cliente_1 + 1, '2024-02-10', 2, 999.98);
-
-
-INSERT INTO LINEA (id_recibo, id_producto, descripcion, cantidad, precio_unitario) VALUES
-(@id_recibo_1, @id_producto_1, 'Laptop', 1, 999.99),
-(@id_recibo_1 + 1, @id_producto_1 + 1, 'Smartphone', 2, 499.99);
-
-
-
+(1, '2024-02-12', 2, 59.98),
+(2, '2024-02-11', 1, 39.99);

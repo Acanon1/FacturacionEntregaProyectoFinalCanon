@@ -1,15 +1,19 @@
 package com.example.FacturacionEntregaProyectoFinalCanon.modelos;
 
+import java.math.BigDecimal;
+
+
+//entidad de linea tipo data transfer object
 public class LineaDTO {
-    private int lineaid;
+    private Long lineaid;
     private int cantidad;
     private String descripcion;
-    private double precio;
+    private BigDecimal precioUnitario;
     
-    public int getLineaid() {
+    public Long getLineaid() {
         return lineaid;
     }
-    public void setLineaid(int lineaid) {
+    public void setLineaid(Long lineaid) {
         this.lineaid = lineaid;
     }
     public int getCantidad() {
@@ -24,11 +28,11 @@ public class LineaDTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public double getPrecio() {
-        return precio;
+    public BigDecimal getPrecioUnitario() {
+        return precioUnitario;
     }
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     
